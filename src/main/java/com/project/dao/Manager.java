@@ -166,7 +166,8 @@ public class Manager {
             personatge = new Personatge(nom, atac, defensa, faccioDB);
 
             for (Habilitat h : habilitats) {
-                personatge.addHabilitat(h);
+                Habilitat hDB = session.merge(h);
+                personatge.addHabilitat(hDB);
             }
             
             session.persist(personatge);
